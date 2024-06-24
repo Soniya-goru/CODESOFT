@@ -1,0 +1,76 @@
+# Task Management System
+
+# List to store tasks
+todo = []
+
+# Function to add a task to the list
+def add(task):
+    todo.append(task)
+    print(f"Task '{task}' added successfully.")
+
+# Function to delete a task by index
+def delete(ind):
+    if 0 <= ind < len(todo):
+        task = todo[ind]
+        del todo[ind]
+        print(f"Task '{task}' deleted successfully.")
+    else:
+        print("Invalid index.")
+
+# Function to mark a task as completed by index
+def mark(ind):
+    if 0 <= ind < len(todo):
+        todo[ind] += " [Completed]"
+        print(f"Task '{todo[ind]}' marked as completed.")
+    else:
+        print("Invalid index.")
+
+# Function to display all tasks
+def display():
+    if not todo:
+        print("No tasks to display.")
+    else:
+        print("Tasks:")
+        for index, task in enumerate(todo, start=1):
+            print(f"{index}. {task}")
+
+# Function to simulate the main menu and operations
+def main():
+    while True:
+        print("\nMenu:")
+        print("1. Add Task")
+        print("2. Display Task")
+        print("3. Mark Task as Completed")
+        print("4. Delete Tasks")
+        print("5. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            task = input("Enter the task: ")
+            add(task)
+        elif choice == "2":
+            display()
+        elif choice == "3":
+            ind = int(input("Enter the index of the task to mark as completed: ")) - 1
+            mark(ind)
+        elif choice == "4":
+            ind = int(input("Enter the index of the task to delete: ")) - 1
+            delete(ind)
+        elif choice == "5":
+            print("Have a nice day..")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+# Correct the entry point check for Jupyter Notebook
+if __name__ == "__main__":
+    main()
+
+# You can also run the functions interactively like this:
+# add("Finish homework")
+# add("Buy groceries")
+# display()
+# mark(0)
+# delete(1)
+# display()
